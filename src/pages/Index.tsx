@@ -83,17 +83,46 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* How It Works Section */}
       <section className="container mx-auto px-6 py-20">
-        <div className="bg-card rounded-2xl shadow-card border border-border p-12 text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            Ready to transform your inbox?
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
+            How MailMart Works
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join thousands of savvy shoppers who never miss a deal. Get early access to MailMart.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Three simple steps to transform your email offers into an organized shopping experience.
           </p>
-          <div className="flex justify-center">
-            <WaitlistForm />
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="text-center space-y-4">
+            <div className="w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center mx-auto">
+              <Mail className="h-8 w-8 text-primary-foreground" />
+            </div>
+            <h3 className="text-xl font-semibold text-foreground">1. Connect Gmail</h3>
+            <p className="text-muted-foreground">
+              Securely connect your Gmail account to automatically sync promotional emails and offers.
+            </p>
+          </div>
+
+          <div className="text-center space-y-4">
+            <div className="w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center mx-auto">
+              <Filter className="h-8 w-8 text-primary-foreground" />
+            </div>
+            <h3 className="text-xl font-semibold text-foreground">2. AI Categorizes</h3>
+            <p className="text-muted-foreground">
+              Our smart filtering categorizes offers into Fashion, Electronics, Groceries, and more.
+            </p>
+          </div>
+
+          <div className="text-center space-y-4">
+            <div className="w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center mx-auto">
+              <Store className="h-8 w-8 text-primary-foreground" />
+            </div>
+            <h3 className="text-xl font-semibold text-foreground">3. Browse & Save</h3>
+            <p className="text-muted-foreground">
+              Shop your personalized storefront with search, filters, and never miss another deal.
+            </p>
           </div>
         </div>
       </section>
