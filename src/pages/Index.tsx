@@ -3,7 +3,7 @@ import { Mail, Filter, Store, Zap } from 'lucide-react';
 import { WaitlistForm } from '@/components/WaitlistForm';
 import { FeatureCard } from '@/components/FeatureCard';
 import heroImage from '@/assets/hero-image.jpg';
-
+import logoImage from '@/assets/mailmart-logo-nobg.png';
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-subtle">
@@ -11,9 +11,7 @@ const Index = () => {
       <header className="container mx-auto px-6 py-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-2 bg-gradient-hero rounded-lg">
-              <Mail className="h-6 w-6 text-primary-foreground" />
-            </div>
+              <img src={logoImage} alt="MailMart Logo" className="h-[75px] w-[75px]" />
             <span className="text-2xl font-bold text-foreground">MailMart</span>
           </div>
         </div>
@@ -130,7 +128,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="container mx-auto px-6 py-12 border-t border-border">
         <div className="text-center text-muted-foreground">
-          <p>&copy; 2024 MailMart. All rights reserved.</p>
+          <p>&copy; 2025 MailMart. All rights reserved.</p>
         </div>
       </footer>
     </div>
