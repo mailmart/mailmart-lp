@@ -15,20 +15,37 @@ export const WaitlistForm = () => {
 
     setIsLoading(true);
 
-    const { error } = await supabase.from("waitlist").insert([{ email }]);
+    try {
+      const { error } = await supabase.from("waitlist").insert([{ email }]);
 
-    if (error) {
+      if (error) {
+        if (error.code === "23505") {
+          toast({
+            title: "Already on the waitlist 😅",
+            description: "This email has already been submitted.",
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Error",
+            description: error.message,
+            variant: "destructive",
+          });
+        }
+      } else {
+        toast({
+          title: "You're on the waitlist! 🎉",
+          description: "We'll notify you when MailMart launches.",
+        });
+        setEmail("");
+      }
+    } catch (err) {
+      console.error(err);
       toast({
-        title: "Error",
-        description: error.message,
+        title: "Unexpected error",
+        description: "Something went wrong. Please try again later.",
         variant: "destructive",
       });
-    } else {
-      toast({
-        title: "You're on the waitlist! 🎉",
-        description: "We'll notify you when MailMart launches.",
-      });
-      setEmail("");
     }
 
     setIsLoading(false);
