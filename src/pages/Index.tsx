@@ -11,7 +11,7 @@ const Index = () => {
       <header className="container mx-auto px-6 py-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-              <img src={logoImage} alt="MailMart Logo" className="h-[75px] w-[75px]" />
+              <img src={logoImage} alt="MailMart Logo" className="h-[80px] w-[80px]" />
             <span className="text-2xl font-bold text-foreground">MailMart</span>
           </div>
         </div>
