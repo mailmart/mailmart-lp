@@ -1,58 +1,111 @@
-import React from 'react';
-import { Mail, Filter, Store, Zap } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Filter, Store, Zap, ChevronDown, ChevronUp } from 'lucide-react';
 import { WaitlistForm } from '@/components/WaitlistForm';
 import { FeatureCard } from '@/components/FeatureCard';
 import heroImage from '@/assets/hero-image.jpg';
 import logoImage from '@/assets/mailmart-logo-nobg.png';
+
 const Index = () => {
+  // Smooth scroll function
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  // FAQ data with state
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      question: "How does MailMart protect my email privacy and security?",
+      answer: "At MailMart, your privacy is the top priority. We never share, sell, or expose your personal email address. When you connect your inbox, we only access promotional emails - no personal or sensitive conversations. Data is processed securely using encrypted connections, and you remain in full control: you can revoke access or unsubscribe from unwanted emails at any time. MailMart acts as a protective layer - decluttering promotions while keeping your inbox private."
+    },
+    {
+      question: "Which email providers does MailMart support?",
+      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+      question: "What's in it for brands?",
+      answer: "MailMart gives brands a smarter way to reach customers. Instead of getting lost in crowded inboxes or spam folders, your offers are displayed in a clean, standardized format - name, logo, deal, category, directly where customers are actively looking for deals. This means higher visibility, better engagement, and more conversions, while giving brands a trusted channel to showcase their promotions to an interested audience."
+    }
+  ];
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-subtle">
-      {/* Header */}
-      <header className="container mx-auto px-6 py-8">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-              <img src={logoImage} alt="MailMart Logo" className="h-[80px] w-[80px]" />
-            <span className="text-2xl font-bold text-foreground">MailMart</span>
+    // keep top padding so sticky header doesn't cover content
+    <div className="min-h-screen bg-gradient-subtle pt-24">
+      {/* Sticky Header */}
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/75 backdrop-blur-sm">
+        <div className="container mx-auto px-6 py-2 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src={logoImage} alt="MailMart Logo" className="h-14 w-14 rounded-md logo-gold" />
+            <span className="text-2xl font-bold">MailMart</span>
           </div>
+          <nav className="flex items-center gap-6">
+            <a 
+              href="#features" 
+              onClick={(e) => handleSmoothScroll(e, 'features')}
+              className="text-foreground hover:text-gold transition-colors font-medium"
+            >
+              Features
+            </a>
+            <a 
+              href="#how-it-works" 
+              onClick={(e) => handleSmoothScroll(e, 'how-it-works')}
+              className="text-foreground hover:text-gold transition-colors font-medium"
+            >
+              How It Works
+            </a>
+            <a 
+              href="#faq" 
+              onClick={(e) => handleSmoothScroll(e, 'faq')}
+              className="text-foreground hover:text-gold transition-colors font-medium"
+            >
+              FAQ
+            </a>
+            <button className="bg-gradient-hero text-white px-4 py-2 rounded-md font-medium hover:opacity-90 transition-all duration-300">
+            Join Waitlist
+          </button>
+          </nav>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="container mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                Turn Your Email 
-                <span className="bg-gradient-hero bg-clip-text text-transparent"> Offers</span> Into 
-                <span className="bg-gradient-hero bg-clip-text text-transparent"> Savings</span>
-              </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
-                Stop missing great deals buried in your inbox. MailMart curates and organizes all your promotional emails into a beautiful, easy-to-browse storefront.
-              </p>
+      {/* Centered hero content */}
+      <section className="container mx-auto px-6 py-20 flex items-center justify-center">
+        <div className="max-w-2xl text-center">
+          <h1 className="text-4xl sm:text-6xl font-extrabold mb-4">
+            The Future Of <span className="text-gold">Offers</span> for Users and Brands
+          </h1>
+
+          <p className="text-lg text-muted-foreground mb-6">
+            Where savings meet simplicity. Where brands meet shoppers who care.
+          </p>
+
+          <div className="mb-6">
+            <p className="mb-2 font-medium">Join the waitlist for early access</p>
+
+            {/* Waitlist form with centered wider layout */}
+            <div className="flex justify-center">
+              <div className="w-full max-w-lg">
+                <WaitlistForm />
+                <p className="mt-3 text-sm text-muted-foreground text-left">💡 Be the first to know when we launch</p>
+              </div>
             </div>
-            
-            <div className="space-y-4">
-              <p className="text-sm font-medium text-foreground">Join the waitlist for early access</p>
-              <WaitlistForm />
-              <p className="text-sm text-muted-foreground">
-                💡 Be the first to know when we launch
-              </p>
-            </div>
-          </div>
-          
-          <div className="relative">
-            <img 
-              src={heroImage} 
-              alt="MailMart email organization interface"
-              className="w-full rounded-2xl shadow-soft"
-            />
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="container mx-auto px-6 py-20">
+      <section id="features" className="container mx-auto px-6 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">
             Why MailMart?
@@ -64,11 +117,6 @@ const Index = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <FeatureCard
-            icon={<Filter className="h-5 w-5" />}
-            title="Smart Curation"
-            description="AI-powered filtering automatically identifies and categorizes your promotional emails, separating deals from clutter."
-          />
-          <FeatureCard
             icon={<Store className="h-5 w-5" />}
             title="Storefront Experience"
             description="Browse your personalized offers in a clean, store-like interface that makes finding deals effortless and enjoyable."
@@ -78,11 +126,16 @@ const Index = () => {
             title="Never Miss Deals"
             description="Get notified about expiring offers and trending deals from your favorite brands before they disappear."
           />
+          <FeatureCard
+            icon={<Mail className="h-5 w-5" />}
+            title="Declutter your inbox"
+            description="Keep your inbox clean for important messages. Let us handle the noise."
+          />
         </div>
       </section>
 
       {/* How It Works Section */}
-      <section className="container mx-auto px-6 py-20">
+      <section id="how-it-works" className="container mx-auto px-6 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">
             How MailMart Works
@@ -122,6 +175,52 @@ const Index = () => {
               Shop your personalized storefront with search, filters, and never miss another deal.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="container mx-auto px-6 py-20">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Get answers to common questions about MailMart.
+          </p>
+        </div>
+        
+        {/* FAQ Content */}
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} className="bg-white rounded-lg border border-border shadow-sm overflow-hidden">
+              <button
+                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                onClick={() => toggleFaq(index)}
+              >
+                <h3 className="text-lg font-semibold text-foreground pr-4">
+                  {faq.question}
+                </h3>
+                {openFaq === index ? (
+                  <ChevronUp className="h-5 w-5 flex-shrink-0" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 flex-shrink-0" />
+                )}
+              </button>
+              
+              {/* Animated answer section */}
+              <div 
+                className={`transition-all duration-300 ease-in-out ${
+                  openFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                } overflow-hidden`}
+              >
+                <div className="px-6 pb-4">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

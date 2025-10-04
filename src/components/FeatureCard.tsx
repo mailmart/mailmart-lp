@@ -8,7 +8,15 @@ interface FeatureCardProps {
 
 export const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) => {
   return (
-    <div className="bg-card p-6 rounded-xl shadow-card border border-border hover:shadow-soft transition-all duration-300">
+    <div
+      className="
+        bg-card p-6 rounded-xl shadow-card border border-border 
+        transition-all duration-300 transform
+        hover:-translate-y-1
+        hover:border-gold 
+        hover:shadow-[0_0_20px_rgba(255,215,0,0.4)]
+      "
+    >
       <div className="flex items-center gap-3 mb-4">
         <div className="p-2 bg-gradient-hero rounded-lg text-primary-foreground">
           {icon}
