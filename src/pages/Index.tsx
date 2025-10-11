@@ -79,9 +79,6 @@ const Index = () => {
             >
               FAQ
             </a>
-            <button className="bg-gradient-hero text-white px-4 py-2 rounded-md font-medium hover:opacity-90 transition-all duration-300">
-            Join Waitlist
-          </button>
           </nav>
         </div>
       </header>
@@ -98,9 +95,7 @@ const Index = () => {
           </p>
 
           <div className="mb-6">
-            <p className="mb-2 font-medium">Join the waitlist for early access</p>
-
-            {/* Waitlist form with centered wider layout */}
+            <br/>
             <div className="flex justify-center">
               <div className="w-full max-w-lg">
                 <WaitlistForm />
