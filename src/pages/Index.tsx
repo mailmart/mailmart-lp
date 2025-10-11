@@ -23,13 +23,20 @@ const Index = () => {
 
   const faqs = [
     {
+      question: "How is MailMart different from my email inbox or other deal sites?",
+      answer: (
+        <>
+          MailMart isn’t just another deal aggregator, it’s a smarter, clutter-free way to experience offers. Instead of digging through hundreds of promotional emails, MailMart organizes every deal into a clean, standardized format showing the brand, offer, and key details at a glance. You stay in control with tools to unsubscribe from unwanted senders and follow only the brands or categories you care about.
+          <br />
+          Unlike traditional deal sites that scrape random coupons, MailMart bridges users and brands directly - giving users real, verified offers and giving brands a transparent, consistent way to reach interested customers.
+        </>
+      )
+    },
+    {
       question: "How does MailMart protect my email privacy and security?",
       answer: "At MailMart, your privacy is the top priority. We never share, sell, or expose your personal email address. When you connect your inbox, we only access promotional emails - no personal or sensitive conversations. Data is processed securely using encrypted connections, and you remain in full control: you can revoke access or unsubscribe from unwanted emails at any time. MailMart acts as a protective layer - decluttering promotions while keeping your inbox private."
     },
-    {
-      question: "Which email providers does MailMart support?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    },
+
     {
       question: "What's in it for brands?",
       answer: "MailMart gives brands a smarter way to reach customers. Instead of getting lost in crowded inboxes or spam folders, your offers are displayed in a clean, standardized format - name, logo, deal, category, directly where customers are actively looking for deals. This means higher visibility, better engagement, and more conversions, while giving brands a trusted channel to showcase their promotions to an interested audience."
@@ -150,9 +157,9 @@ const Index = () => {
             <div className="w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center mx-auto">
               <Mail className="h-8 w-8 text-primary-foreground" />
             </div>
-            <h3 className="text-xl font-semibold text-foreground">1. Connect Gmail</h3>
+            <h3 className="text-xl font-semibold text-foreground">1. Connect Email</h3>
             <p className="text-muted-foreground">
-              Securely connect your Gmail account to automatically sync promotional emails and offers.
+              Securely connect your email count to automatically sync promotional emails and offers.
             </p>
           </div>
 
@@ -160,7 +167,7 @@ const Index = () => {
             <div className="w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center mx-auto">
               <Filter className="h-8 w-8 text-primary-foreground" />
             </div>
-            <h3 className="text-xl font-semibold text-foreground">2. AI Categorizes</h3>
+            <h3 className="text-xl font-semibold text-foreground">2. Smart Categorization</h3>
             <p className="text-muted-foreground">
               Our smart filtering categorizes offers into Fashion, Electronics, Groceries, and more.
             </p>
